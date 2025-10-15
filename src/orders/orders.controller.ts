@@ -1,6 +1,7 @@
 import { Body, Controller, Get, HttpException, Param, Patch, Post } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -31,9 +32,9 @@ export class OrdersController {
         }
     }
     @Patch(':id')
-    updateStatusOrder(): string {
+    async updateStatusOrder(@Param('id') id:string , @Body() body: UpdateOrderDto): Promise<string> {
         try {
-            return this.ordersService.updateStatusOrder();
+            return await this.ordersService.updateStatusOrder(id,body);
         } catch (error) {
             throw new HttpException("Failed to update order status", 500);
         }

@@ -1,4 +1,4 @@
-import { IsString, Length, MaxLength, min, MinLength } from "class-validator";
+import { IsDate, IsEnum, IsString, Length} from "class-validator";
 
 export class CreateOrderDto {
     @IsString()

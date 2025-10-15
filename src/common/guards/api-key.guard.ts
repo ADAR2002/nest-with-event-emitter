@@ -1,5 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { API_KEY_HEADER } from '../constant';
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
@@ -9,7 +10,7 @@ export class ApiKeyGuard implements CanActivate {
   ): boolean{
     console.log("API Key Guard is working");
     const request = context.switchToHttp().getRequest();
-    const apiKey = request.headers['x-api-key'];
+    const apiKey = request.headers[API_KEY_HEADER];
     const validApiKey = this.configService.get<string>('API_KEY');
     if (!apiKey || apiKey !== validApiKey) {
       return false;
