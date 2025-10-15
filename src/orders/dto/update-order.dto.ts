@@ -7,8 +7,4 @@ export class UpdateOrderDto {
     @IsString()
     @IsIn(validStatuses as any)
     status: 'pending' | 'in_progress' | 'completed' | 'canceled';
-    
-    @IsOptional()
-    @IsString()
-    socketId?: string;
 }

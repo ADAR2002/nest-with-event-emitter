@@ -6,7 +6,7 @@ import { OrdersGateway } from "../gateway/orders.gateway";
 
 @Injectable()
 export class OrderListenersService {
-    constructor(private orderServiceEvent: OrderServiceEvent, private readonly ordersGetway: OrdersGateway) { }
+    constructor(private readonly ordersGetway: OrdersGateway) { }
 
     @OnEvent(ORDER_STATUS_UPDATED)
     handleOrderStatusUpdatedEvent(payload: any) {

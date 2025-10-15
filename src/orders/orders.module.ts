@@ -6,7 +6,7 @@ import { Order, OrderSchema } from './schemas/order.schema';
 import { OrderListenersService } from './listeners/order-listeners.service';
 import { OrderServiceEvent } from './event/order.service.event';
 import { OrdersGateway } from './gateway/orders.gateway';
-import { AppModule } from 'src/app.module';
+
 
 @Module({
   imports: [

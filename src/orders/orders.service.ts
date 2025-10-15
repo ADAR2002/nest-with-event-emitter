@@ -10,8 +10,8 @@ import { OrderServiceEvent } from './event/order.service.event';
 @Injectable()
 export class OrdersService {
    
-    constructor(private orderServiceEvent:OrderServiceEvent ,@InjectModel(Order.name) private orderModel: Model<OrderDocument>) { }
-    async newOrder(data: CreateOrderDto): Promise<string> {
+    constructor(private orderServiceEvent:OrderServiceEvent ,@InjectModel("Order") private orderModel: Model<OrderDocument>) { }
+    async createOrder(data: CreateOrderDto): Promise<string> {
         try {
             const newOrder = new this.orderModel(data);
             await newOrder.save();
@@ -67,8 +67,8 @@ export class OrdersService {
                 orderId: order._id,
                 clientName: order.clientName,
                 newStatus: order.status,
-                createdAt: (order as any).createdAt,
-                updatedAt: (order as any).updatedAt,
+                createdAt: order.createdAt,
+                updatedAt: order.updatedAt,
             });
 
             return "Order status updated";

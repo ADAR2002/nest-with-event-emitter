@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type OrderDocument = Order & Document;
+export type OrderDocument = Order & Document & { createdAt: Date; updatedAt: Date };
 
 const validStatuses = ['pending', 'in_progress', 'completed', 'canceled'] as const;
 
