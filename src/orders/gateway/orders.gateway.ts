@@ -2,7 +2,7 @@ import { ConnectedSocket, WebSocketGateway, WebSocketServer, SubscribeMessage, M
 import { Server, Socket } from 'socket.io';
 import { Injectable } from '@nestjs/common';
 import { ORDER_STATUS_UPDATED_SOCKET } from 'src/common/constant';
-import { UpdateOrderEvent } from '../event/‫‪order.status.updated‬‬.event';
+import { UpdateOrderEvent } from '../event/order-status-update.event';
 
 @WebSocketGateway({ cors: { origin: '*' } })
 @Injectable()
