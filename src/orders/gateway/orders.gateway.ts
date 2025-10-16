@@ -25,9 +25,9 @@ export class OrdersGateway {
 
     
     @SubscribeMessage('register')
-    handleRegister(@MessageBody() data: { userId: string }, @ConnectedSocket() client: Socket) {
+    handleRegister(@MessageBody() data: { userName: string }, @ConnectedSocket() client: Socket) {
         if (data && data.userId) {
-            this.userSockets.set(data.userId, client.id);
+            this.userSockets.set(data.userName, client.id);
             client.emit('registered', { success: true });
         }
     }
